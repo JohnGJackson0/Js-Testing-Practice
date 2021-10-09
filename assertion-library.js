@@ -1,16 +1,36 @@
 const { sum, subtract } = require("./math");
 
-let result, expected;
+//testing framework
+/*
+test makes this a framework and the benefits are: 
+1. stack trace will print out which assertion
+logic has failed 
+2. all tests will be ran regaurdless of if one 
+failed
+*/
 
-result = sum(3, 7);
-expected = 10;
+test("sum adds numbers", () => {
+  const result = sum(3, 7);
+  const expected = 10;
+  expect(result).toBe(expected);
+});
+test("subtract subtracts numbers", () => {
+  const result = subtract(7, 3);
+  const expected = 4;
 
-expect(result).toBe(expected);
+  expect(result).toBe(expected);
+});
 
-result = subtract(7, 3);
-expected = 4;
-
-expect(result).toBe(expected);
+function test(title, callback) {
+  try {
+    callback();
+    console.log(`✓ ${title}`);
+  } catch (error) {
+    console.log(`X ${title}`);
+    console.log(title);
+    console.log(error);
+  }
+}
 
 //basic assertion library
 function expect(actual) {
