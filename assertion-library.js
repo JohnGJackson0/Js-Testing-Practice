@@ -9,8 +9,8 @@ logic has failed
 failed
 */
 
-test("sum adds numbers", () => {
-  const result = sum(3, 7);
+test("sum adds numbers", async () => {
+  const result = await sumAsync(3, 7);
   const expected = 10;
   expect(result).toBe(expected);
 });
@@ -33,7 +33,7 @@ function test(title, callback) {
 }
 
 //basic assertion library
-function expect(actual) {
+async function expect(actual) {
   return {
     toBe(expected) {
       if (actual !== expected) {
